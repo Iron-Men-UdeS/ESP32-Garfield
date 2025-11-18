@@ -1,18 +1,33 @@
 #include <Arduino.h>
+#include "BluetoothGarf.h"
+#include "sPrint.h"
 
-// put function declarations here:
-int myFunction(int, int);
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  Serial.begin(115200);
+  setupBluetooth();
+  Serial.println("Robot Garfield prêt (serveur).");
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+  etat etatGarfield = { 2, 0}; // Exemple d'état de Garfield à envoyer
+  positionEtEtat etatLasagne;
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+envoieEtat(etatGarfield);
+Serial.println("Garfield enyoyé position à Lasagne");
+
+  if (recoieEtat(etatLasagne)) {
+    //envoieEtat(etatGarfield);
+    Serial.print("Position reçu : ");
+    Serial.print(etatLasagne.x);
+    Serial.print(", ");
+    Serial.print(etatLasagne.y);
+    Serial.print(", ");
+    Serial.print(etatLasagne.etatJeu);
+    Serial.print(", ");
+    Serial.print(etatLasagne.GelerAutreRobot);
+  }
+
+  delay(2000); // Attendre avant le prochain envoi
 }
