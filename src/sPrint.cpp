@@ -9,12 +9,12 @@ void printPosition (positionEtEtat printPos){ // Imprime la position reçue
     Serial.print(", ");
     Serial.print(printPos.etatJeu);
     Serial.print(", ");
-    Serial.print(printPos.GelerAutreRobot);
+    Serial.println(printPos.GelerAutreRobot);
 }
 
 void printtat (etat printEtat){ // Imprime l'état reçu
     Serial.print("État reçu : ");
     Serial.print(printEtat.etatJeu);
     Serial.print(", ");
-    Serial.print(printEtat.GelerAutreRobot);
+    Serial.println(printEtat.GelerAutreRobot);
 }

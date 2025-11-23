@@ -18,15 +18,15 @@ envoieEtat(etatGarfield);
 Serial.println("Garfield enyoyé position à Lasagne");
 
   if (recoieEtat(etatLasagne)) {
-    //envoieEtat(etatGarfield);
-    Serial.print("Position reçu : ");
-    Serial.print(etatLasagne.x);
-    Serial.print(", ");
-    Serial.print(etatLasagne.y);
-    Serial.print(", ");
-    Serial.print(etatLasagne.etatJeu);
-    Serial.print(", ");
-    Serial.print(etatLasagne.GelerAutreRobot);
+    printPosition(etatLasagne);
+    // Serial.print("Position reçu : ");
+    // Serial.print(etatLasagne.x);
+    // Serial.print(", ");
+    // Serial.print(etatLasagne.y);
+    // Serial.print(", ");
+    // Serial.print(etatLasagne.etatJeu);
+    // Serial.print(", ");
+    // Serial.print(etatLasagne.GelerAutreRobot);
   }
 
   delay(2000); // Attendre avant le prochain envoi
