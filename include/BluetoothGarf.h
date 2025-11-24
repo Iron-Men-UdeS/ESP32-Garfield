@@ -3,20 +3,26 @@
 
 #include <BluetoothSerial.h>
 
-struct positionEtEtat {
+struct sPositionEtEtat {
   float x;
   float y;
   int etatJeu;
   bool GelerAutreRobot;
 };
 
-struct etat {
+struct sEtat {
   int etatJeu;
   bool GelerAutreRobot;
 };
 
-void envoieEtat(const etat &pos);
-bool recoieEtat(positionEtEtat &pos);
+extern BluetoothSerial SerialBT;
+
+void envoieEtat(uint8_t *tab);
+bool recoieEtat(uint8_t *tab);
+
+bool recoieEtatstruct(sPositionEtEtat &pos);
+void envoieEtatstruct(const sEtat &pos);
+
 void setupBluetooth();
 void connexionBluetooth();
 

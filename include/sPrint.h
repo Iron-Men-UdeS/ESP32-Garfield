@@ -1,5 +1,5 @@
 #include <BluetoothGarf.h>
 
 
-void printEtat (etat printEtat);
-void printPosition (positionEtEtat printPos);
+void printEtat (sEtat printEtat);
+void printPosition (sPositionEtEtat printPos);
