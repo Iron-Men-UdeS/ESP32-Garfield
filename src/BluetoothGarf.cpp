@@ -53,6 +53,7 @@ void setupBluetooth() // Initialisation du Bluetooth
  ******************************************************************************************/
 
 void envoieEtat(uint8_t *tab) { // Prend la reférence d'une structure Position en paramètre
+  SerialBT.write(0x24); // Envoie le caractère '$' pour indiquer le début de la trame
   SerialBT.write(tab, sizeof(tab)); 
 }
 
@@ -64,10 +65,15 @@ void envoieEtat(uint8_t *tab) { // Prend la reférence d'une structure Position 
  * @param tab tableau dans lequel la position et l'état du robot seront copiés
  ******************************************************************************************/
 
-bool recoieEtat(uint8_t *tab) {
-  if (SerialBT.available() >= sizeof(tab)) {
-    SerialBT.readBytes(tab, sizeof(tab));
-    return true;
+bool recoieEtat(uint8_t *tab)
+{
+  if (SerialBT.available() >= sizeof(tab))
+  {
+    if (SerialBT.read() == 0x24)
+    {
+      SerialBT.readBytes(tab, sizeof(tab));
+      return true;
+    }
   }
   return false;
 }
